@@ -1,5 +1,3 @@
-import readlin from "readline";
-
 import fs from "fs";
 const path = './CharlyTracker.json';
 
@@ -44,7 +42,7 @@ program
 .option("--amount <amount>", "Price of the expense")
 .option("--date <date>", "Expense date MM/DD/YYYY or MM-DD-YYYY")
 .action((arg) => {
-  let realdate:String = String(arg.date).replaceAll("-","/");
+  let realdate:string = String(arg.date).replaceAll("-","/");
   realdate = (/^\d{2}\/\d{2}\/\d{4}$/.test(realdate)) ? realdate : formatterUS.format(Date.now());
   let realdesc = arg.description? arg.description: "No descrip"
   let am = (arg.amount && arg.amount > 0) ? arg.amount : 0
